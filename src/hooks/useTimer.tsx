@@ -1,14 +1,11 @@
-import {useCallback, useEffect, useRef, useState} from 'react';
-
-export const SECONDS_PER_MINUTE = 60;
-export const MS_PER_SECONDS = 1000;
+import {useCallback, useEffect, useState} from 'react';
+import {formatTime, MS_PER_SECONDS, SECONDS_PER_MINUTE} from '../common/utils';
 
 type TimerState = 'stopped' | 'start' | 'paused' | 'reset' | 'started';
 
 export const useTimer = (duration: number) => {
   const now = Date.now();
   const [endMs, setEndMs] = useState<number>(now);
-  const intervalRef = useRef<any | null>(null);
   const [timerState, setTimerState] = useState<TimerState>('stopped');
   const [clock, setClock] = useState<number>(now);
 
@@ -45,12 +42,8 @@ export const useTimer = (duration: number) => {
     setTimerState('started');
   }, []);
 
-  const diffSeconds = (endMs - clock) / MS_PER_SECONDS;
-  const remainingTimeMin = Math.floor(diffSeconds / SECONDS_PER_MINUTE);
-  const remainingTimeSeconds = Math.ceil(diffSeconds % SECONDS_PER_MINUTE);
-  const remainingTime = `${remainingTimeMin
-    .toString()
-    .padStart(2, '0')}:${remainingTimeSeconds.toString().padStart(2, '0')}`;
+  const diffMs = endMs - clock;
+  const remainingTime = formatTime(diffMs);
 
   return {
     start,

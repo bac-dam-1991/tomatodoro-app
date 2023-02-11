@@ -10,7 +10,7 @@ const timeFormatter = new Intl.DateTimeFormat('default', {
 });
 
 export const PomodoroTimer = () => {
-  const [durationMin, setDurationMin] = useState<number>(10);
+  const [durationMin, setDurationMin] = useState<number>(25);
   const {remainingTime, endMs, start, stop, reset, timerState, clock, pause} =
     useTimer(durationMin);
 
