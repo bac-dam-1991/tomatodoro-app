@@ -1,4 +1,5 @@
 import {ChangeEventHandler, useState} from 'react';
+import {formatTime} from '../common/utils';
 import {useTimer} from '../hooks/useTimer';
 
 const dateFormatter = new Intl.DateTimeFormat('default', {
@@ -10,8 +11,8 @@ const timeFormatter = new Intl.DateTimeFormat('default', {
 });
 
 export const PomodoroTimer = () => {
-  const [durationMin, setDurationMin] = useState<number>(25);
-  const {remainingTime, endMs, start, stop, reset, timerState, clock, pause} =
+  const [durationMin, setDurationMin] = useState<number>(1);
+  const {remainingTimeMs, endMs, start, stop, timerState, clock, pause} =
     useTimer(durationMin);
 
   const handleDurationChange: ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -33,17 +34,14 @@ export const PomodoroTimer = () => {
       <button onClick={start} disabled={timerState === 'started'}>
         Start
       </button>
-      <button onClick={pause} disabled={['paused'].includes(timerState)}>
+      <button onClick={pause} disabled={timerState !== 'started'}>
         Pause
       </button>
-      <button onClick={stop} disabled={timerState === 'stopped'}>
+      <button onClick={stop} disabled={timerState !== 'started'}>
         Stop
       </button>
-      <button onClick={reset} disabled={timerState === 'reset'}>
-        Reset
-      </button>
       <div>
-        <div>Countdown: {remainingTime} minutes</div>
+        <div>Countdown: {formatTime(remainingTimeMs)} minutes</div>
       </div>
       <div>
         <div>End date: {dateFormatter.format(endMs)}</div>
