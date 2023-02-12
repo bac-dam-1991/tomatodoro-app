@@ -1,19 +1,19 @@
 ---
-import {PomodoroTimer} from '../components/PomodoroTimer';
+import { PomodoroTimer } from '../components/PomodoroTimer';
 ---
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Tomatodoro</title>
-  </head>
-  <body>
-    <h1 class="text-4xl md:text-6xl text-center mb-8">Tomatodoro</h1>
-    <div class="max-w-3xl m-auto">
-      <PomodoroTimer client:load />
-    </div>
-  </body>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Tomatodoro</title>
+	</head>
+	<body>
+		<h1 class="text-4xl md:text-6xl text-center mb-8 mt-8">Tomatodoro</h1>
+		<div class="max-w-3xl m-auto p-4">
+			<PomodoroTimer client:load />
+		</div>
+	</body>
 </html>
