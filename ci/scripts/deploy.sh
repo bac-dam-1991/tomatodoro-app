@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 ROOT="$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )"
 DEPLOY_ENV=dev
