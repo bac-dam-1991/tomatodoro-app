@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Deploy infrastructure
           command: |
-            chmod u+x deploy.sh
+            chmod u+x ci/scripts/deploy.sh
             ls -l ci/scripts/deploy.sh
 
 workflows:
