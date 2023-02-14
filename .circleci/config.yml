@@ -11,8 +11,8 @@ jobs:
           name: Deploy infrastructure
           command: |
             chmod u+x ci/scripts/deploy.sh
-            ls -l ci/scripts/deploy.sh
-            ci/scripts/deploy.sh | sh
+            apk update && apk add bash
+            ci/scripts/deploy.sh
 
 workflows:
   version: 2
