@@ -12,7 +12,8 @@ jobs:
           command: |
             chmod u+x ci/scripts/deploy.sh
             ls -l ci/scripts/deploy.sh
-            ./ci/scripts/deploy.sh
+            cd ci/scripts
+            ls
 
 workflows:
   version: 2
