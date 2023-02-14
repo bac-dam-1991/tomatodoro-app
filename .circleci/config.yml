@@ -14,6 +14,7 @@ jobs:
             ls -l ci/scripts/deploy.sh
             cd ci/scripts
             ls
+            ./deploy.sh
 
 workflows:
   version: 2
