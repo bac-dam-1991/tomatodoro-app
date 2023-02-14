@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Deploy infrastructure
           command: |
-            ci/scripts/deploy.sh
+            ls -l ci/scripts/deploy.sh
 
 workflows:
   version: 2
