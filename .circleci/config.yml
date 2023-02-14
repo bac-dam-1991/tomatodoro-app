@@ -1,5 +1,9 @@
+version: 2
+
 jobs:
   deploy:
+    docker:
+      - image: docker.mirror.hashicorp.services/hashicorp/terraform:light
     working_directory: /tmp/project
     steps:
       - checkout
@@ -7,3 +11,9 @@ jobs:
           name: Deploy infrastructure
           command: |
             ci/scripts/deploy.sh
+
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - deploy
